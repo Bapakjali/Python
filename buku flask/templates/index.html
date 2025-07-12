@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rekomendasi Buku AI</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #1f4037, #99f2c8);
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background: rgba(0,0,0,0.4);
+            border-radius: 15px;
+            padding: 30px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border-radius: 5px;
+            border: none;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .book-list {
+            margin-top: 30px;
+        }
+        .book-list li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Rekomendasi Buku AI</h1>
+        <p>Masukkan genre yang Anda minati (contoh: AI, ML, Data):</p>
+        <form method="POST">
+            <input type="text" name="genre" required>
+            <br>
+            <button type="submit">Cari Rekomendasi</button>
+        </form>
+
+        {% if genre %}
+            <div class="book-list">
+                <h2>Hasil untuk genre: {{ genre }}</h2>
+                {% if rekomendasi %}
+                    <ul>
+                        {% for buku in rekomendasi %}
+                            <li>{{ buku }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Tidak ada buku ditemukan untuk genre tersebut.</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
